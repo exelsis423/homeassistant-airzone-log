@@ -6,12 +6,14 @@ import logging
 from airzone import airzone_factory
 
 from homeassistant.components.sensor import SensorEntity
-from homeassistant.const import CONF_HOST, CONF_PORT, UnitOfTemperature
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.const import (
+    CONF_DEVICE_CLASS,
+    CONF_DEVICE_ID,
+    CONF_HOST,
+    CONF_PORT,
+)
 
 from .const import (
-    CONF_DEVICE_ID,
-    CONF_DEVICE_CLASS,
     CONF_SPEED_PERCENTAGE,
     DEFAULT_DEVICE_ID,
     DEFAULT_DEVICE_CLASS,
