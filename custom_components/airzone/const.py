@@ -15,7 +15,10 @@ from homeassistant.components.climate import (
 )
 from homeassistant.const import Platform
 
-PLATFORMS = [Platform.CLIMATE]
+PLATFORMS = [
+    "climate",
+    "sensor",
+]
 
 
 ### Innobus Extra Attributes
