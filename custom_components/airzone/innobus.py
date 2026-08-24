@@ -137,47 +137,6 @@ class InnobusZone(ClimateEntity):
         self._airzone_zone.set_signal_temperature_value(round(float(temperature), 1))
 
     @property
-    def preset_mode(self) -> Optional[str]:
-        """Return the current preset mode, e.g., home, away, temp.
-        Requires SUPPORT_PRESET_MODE.
-        """
-        if self._airzone_zone.is_sleep_on():
-            return PRESET_SLEEP
-        return PRESET_NONE
-
-    @property
-    def preset_modes(self) -> Optional[List[str]]:
-        """Return a list of available preset modes.
-        Requires SUPPORT_PRESET_MODE.
-        """
-        return ZONE_PRESET_MODES
-
-    def set_preset_mode(self, preset_mode: str) -> None:
-        """Set new preset mode."""
-        if preset_mode == PRESET_NONE:
-            self._airzone_zone.turnoff_sleep()
-        else:
-            self._airzone_zone.turnon_sleep()
-
-    @property
-    def fan_mode(self) -> Optional[str]:
-        """Return the fan setting.
-        """
-        fan_mode = self._airzone_zone.get_speed_selection().name
-        return ZONE_FAN_MODES_R[fan_mode]
-
-
-    @property
-    def fan_modes(self) -> Optional[List[str]]:
-        """Return the list of available fan modes.
-        """
-        return list(ZONE_FAN_MODES.keys())
-
-    def set_fan_mode(self, fan_mode: str) -> None:
-        """Set new target fan mode."""
-        self._airzone_zone.set_speed_selection(ZONE_FAN_MODES[fan_mode])
-
-    @property
     def unique_id(self):
         return self._airzone_zone.unique_id
 
