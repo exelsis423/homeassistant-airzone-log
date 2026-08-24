@@ -130,7 +130,12 @@ class InnobusZone(ClimateEntity):
     @property
     def current_temperature(self):
         """Return the current temperature."""
-        return self._airzone_zone.local_temperature
+
+        # Ancienne méthode : registre 10
+        # return self._airzone_zone.local_temperature
+
+        # Nouvelle méthode : registre 8
+        return self._airzone_zone._zone_state[8] / 10
 
     @property
     def target_temperature(self):
