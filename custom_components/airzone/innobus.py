@@ -75,34 +75,22 @@ class InnobusZone(ClimateEntity):
 
     @property
     def hvac_mode(self) -> HVACMode:
-        """Return hvac operation ie. heat, cool mode.
-        Need to be one of HVAC_MODE_*.
-        """
-        tacto_on =  bool(self._airzone_zone.is_tacto_on())
-        auto_on = bool(self._airzone_zone.is_automatic_mode())
-        if tacto_on and auto_on:
+        """Return the current zone state."""
+        if self._airzone_zone.is_tacto_on():
             return HVACMode.AUTO
-        elif tacto_on and not auto_on:
-            return HVACMode.HEAT_COOL
-        else:
-            return HVACMode.OFF
+        return HVACMode.OFF
 
     @property
     def hvac_modes(self) -> list[HVACMode]:
         """Return the list of available hvac operation modes.
         Need to be a subset of HVAC_MODES.
         """
-        return ZONE_HVAC_MODES
+        return [HVACMode.OFF, HVACMode.AUTO]
 
     def set_hvac_mode(self, hvac_mode: HVACMode) -> None:
         """Set new target hvac mode."""
         if hvac_mode == HVACMode.OFF:
             self._airzone_zone.turnoff_tacto()
-
-        elif hvac_mode == HVACMode.HEAT_COOL:
-            self._airzone_zone.turnoff_automatic_mode()
-            self._airzone_zone.retrieve_zone_state()
-            self._airzone_zone.turnon_tacto()
 
         elif hvac_mode == HVACMode.AUTO:
             self._airzone_zone.turnon_automatic_mode()
