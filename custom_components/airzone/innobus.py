@@ -67,11 +67,11 @@ class InnobusZone(ClimateEntity):
 
     def turn_on(self):
         """Turn on."""
-        self._airzone_zone.turn_on()
+        self._airzone_zone.turnon_tacto()
 
     def turn_off(self):
         """Turn off."""
-        self._airzone_zone.turn_off()
+        self._airzone_zone.turnoff_tacto()
 
     @property
     def hvac_mode(self) -> HVACMode:
