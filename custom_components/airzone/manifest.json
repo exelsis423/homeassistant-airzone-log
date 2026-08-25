@@ -2,7 +2,7 @@
   "codeowners": ["@gpulido"],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/gpulido/homeassistant-airzone",
+  "documentation": "https://github.com/gpulido/homeassistant-airzone-dbl",
   "domain": "airzone",
   "name": "AirZone",
   "requirements": [
