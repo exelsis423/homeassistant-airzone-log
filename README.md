@@ -1,4 +1,4 @@
-# homeassistant-airzone
+# homeassistant-airzone-dbl
 Home Assistant Custom component to manage Airzone installations.
 It relays on the [python-airzone](https://pypi.org/project/python-airzone/) library to connect to a Innobus / Airzone / LocalAPI installation.
 
